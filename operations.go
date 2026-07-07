@@ -6,350 +6,350 @@ import "context"
 
 // CreateCloneParams holds the parameters for CreateClone.
 type CreateCloneParams struct {
-	PreferredLanguage                string `json:"preferred_language,omitempty"`
-	Username                         string `json:"username,omitempty"`
-	Password                         string `json:"password,omitempty"`
-	Codename                         string `json:"codename,omitempty"`
-	Nickname                         string `json:"nickname,omitempty"`
-	Gender                           string `json:"gender,omitempty"`
-	AvatarID                         string `json:"avatar_id,omitempty"`
-	AcceptChatroomInvitationByOthers *bool  `json:"accept_chatroom_invitation_by_others,omitempty"`
+	PreferredLanguage string `json:"preferred_language,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	Codename string `json:"codename,omitempty"`
+	Nickname string `json:"nickname,omitempty"`
+	Gender string `json:"gender,omitempty"`
+	AvatarID string `json:"avatar_id,omitempty"`
+	AcceptChatroomInvitationByOthers *bool `json:"accept_chatroom_invitation_by_others,omitempty"`
 }
 
 // GetClonesParams holds the parameters for GetClones.
 type GetClonesParams struct {
 	PreferredLanguage string `json:"preferred_language,omitempty"`
-	Username          string `json:"username,omitempty"`
-	Password          string `json:"password,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
 }
 
 // UpdateCloneParams holds the parameters for UpdateClone.
 type UpdateCloneParams struct {
-	PreferredLanguage                string `json:"preferred_language,omitempty"`
-	Username                         string `json:"username,omitempty"`
-	Password                         string `json:"password,omitempty"`
-	Codename                         string `json:"codename,omitempty"`
-	Nickname                         string `json:"nickname,omitempty"`
-	Gender                           string `json:"gender,omitempty"`
-	AvatarID                         string `json:"avatar_id,omitempty"`
-	AcceptChatroomInvitationByOthers *bool  `json:"accept_chatroom_invitation_by_others,omitempty"`
+	PreferredLanguage string `json:"preferred_language,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	Codename string `json:"codename,omitempty"`
+	Nickname string `json:"nickname,omitempty"`
+	Gender string `json:"gender,omitempty"`
+	AvatarID string `json:"avatar_id,omitempty"`
+	AcceptChatroomInvitationByOthers *bool `json:"accept_chatroom_invitation_by_others,omitempty"`
 }
 
 // GetQuotaParams holds the parameters for GetQuota.
 type GetQuotaParams struct {
 	PreferredLanguage string `json:"preferred_language,omitempty"`
-	Username          string `json:"username,omitempty"`
+	Username string `json:"username,omitempty"`
 }
 
 // CheckUsernameParams holds the parameters for CheckUsername.
 type CheckUsernameParams struct {
 	PreferredLanguage string `json:"preferred_language,omitempty"`
-	Username          string `json:"username,omitempty"`
+	Username string `json:"username,omitempty"`
 }
 
 // LoginParams holds the parameters for Login.
 type LoginParams struct {
 	PreferredLanguage string `json:"preferred_language,omitempty"`
-	Username          string `json:"username,omitempty"`
-	Password          string `json:"password,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
 }
 
 // LogoutParams holds the parameters for Logout.
 type LogoutParams struct {
 	PreferredLanguage string `json:"preferred_language,omitempty"`
-	Username          string `json:"username,omitempty"`
-	Password          string `json:"password,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
 }
 
 // RegisterParams holds the parameters for Register.
 type RegisterParams struct {
-	PreferredLanguage                string `json:"preferred_language,omitempty"`
-	Username                         string `json:"username,omitempty"`
-	Password                         string `json:"password,omitempty"`
-	Email                            string `json:"email,omitempty"`
-	EmailVerificationCode            string `json:"email_verification_code,omitempty"`
-	FirstName                        string `json:"first_name,omitempty"`
-	LastName                         string `json:"last_name,omitempty"`
-	Nickname                         string `json:"nickname,omitempty"`
-	Gender                           string `json:"gender,omitempty"`
-	BirthDate                        *int64 `json:"birth_date,omitempty"`
-	PhoneNumber                      string `json:"phone_number,omitempty"`
-	AvatarID                         string `json:"avatar_id,omitempty"`
-	AcceptChatroomInvitationByOthers *bool  `json:"accept_chatroom_invitation_by_others,omitempty"`
+	PreferredLanguage string `json:"preferred_language,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	Email string `json:"email,omitempty"`
+	EmailVerificationCode string `json:"email_verification_code,omitempty"`
+	FirstName string `json:"first_name,omitempty"`
+	LastName string `json:"last_name,omitempty"`
+	Nickname string `json:"nickname,omitempty"`
+	Gender string `json:"gender,omitempty"`
+	BirthDate *int64 `json:"birth_date,omitempty"`
+	PhoneNumber string `json:"phone_number,omitempty"`
+	AvatarID string `json:"avatar_id,omitempty"`
+	AcceptChatroomInvitationByOthers *bool `json:"accept_chatroom_invitation_by_others,omitempty"`
 }
 
 // CheckChatroomUpdatesParams holds the parameters for CheckChatroomUpdates.
 type CheckChatroomUpdatesParams struct {
-	PreferredLanguage string           `json:"preferred_language,omitempty"`
-	Username          string           `json:"username,omitempty"`
-	Password          string           `json:"password,omitempty"`
-	Chatrooms         []map[string]any `json:"chatrooms,omitempty"`
+	PreferredLanguage string `json:"preferred_language,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	Chatrooms []map[string]any `json:"chatrooms,omitempty"`
 }
 
 // CreateChatroomParams holds the parameters for CreateChatroom.
 type CreateChatroomParams struct {
-	PreferredLanguage    string `json:"preferred_language,omitempty"`
-	Username             string `json:"username,omitempty"`
-	Password             string `json:"password,omitempty"`
-	ChatroomName         string `json:"chatroom_name,omitempty"`
-	IsPublic             *bool  `json:"is_public,omitempty"`
-	AvatarID             string `json:"avatar_id,omitempty"`
-	SoulmateCheckEnabled *bool  `json:"soulmate_check_enabled,omitempty"`
+	PreferredLanguage string `json:"preferred_language,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	ChatroomName string `json:"chatroom_name,omitempty"`
+	IsPublic *bool `json:"is_public,omitempty"`
+	AvatarID string `json:"avatar_id,omitempty"`
+	SoulmateCheckEnabled *bool `json:"soulmate_check_enabled,omitempty"`
 }
 
 // CreateChatroomMembershipParams holds the parameters for CreateChatroomMembership.
 type CreateChatroomMembershipParams struct {
 	PreferredLanguage string `json:"preferred_language,omitempty"`
-	Username          string `json:"username,omitempty"`
-	Password          string `json:"password,omitempty"`
-	ChatroomID        string `json:"chatroom_id,omitempty"`
-	InviteeUsername   string `json:"invitee_username,omitempty"`
-	InviteeCodename   string `json:"invitee_codename,omitempty"`
-	AdminLevel        string `json:"admin_level,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	ChatroomID string `json:"chatroom_id,omitempty"`
+	InviteeUsername string `json:"invitee_username,omitempty"`
+	InviteeCodename string `json:"invitee_codename,omitempty"`
+	AdminLevel string `json:"admin_level,omitempty"`
 }
 
 // CreateChatroomMessageParams holds the parameters for CreateChatroomMessage.
 type CreateChatroomMessageParams struct {
 	PreferredLanguage string `json:"preferred_language,omitempty"`
-	Username          string `json:"username,omitempty"`
-	Password          string `json:"password,omitempty"`
-	ChatroomID        string `json:"chatroom_id,omitempty"`
-	Text              string `json:"text,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	ChatroomID string `json:"chatroom_id,omitempty"`
+	Text string `json:"text,omitempty"`
 }
 
 // GetChatroomMembershipParams holds the parameters for GetChatroomMembership.
 type GetChatroomMembershipParams struct {
-	PreferredLanguage   string `json:"preferred_language,omitempty"`
-	Page                *int64 `json:"page,omitempty"`
-	PageSize            *int64 `json:"page_size,omitempty"`
-	SortBy              string `json:"sort_by,omitempty"`
-	SortOrder           *int64 `json:"sort_order,omitempty"`
-	UseCursorPagination *bool  `json:"use_cursor_pagination,omitempty"`
-	CursorValue         string `json:"cursor_value,omitempty"`
-	CursorID            string `json:"cursor_id,omitempty"`
-	Username            string `json:"username,omitempty"`
-	Password            string `json:"password,omitempty"`
-	ChatroomID          string `json:"chatroom_id,omitempty"`
+	PreferredLanguage string `json:"preferred_language,omitempty"`
+	Page *int64 `json:"page,omitempty"`
+	PageSize *int64 `json:"page_size,omitempty"`
+	SortBy string `json:"sort_by,omitempty"`
+	SortOrder *int64 `json:"sort_order,omitempty"`
+	UseCursorPagination *bool `json:"use_cursor_pagination,omitempty"`
+	CursorValue string `json:"cursor_value,omitempty"`
+	CursorID string `json:"cursor_id,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	ChatroomID string `json:"chatroom_id,omitempty"`
 }
 
 // GetChatroomMessagesParams holds the parameters for GetChatroomMessages.
 type GetChatroomMessagesParams struct {
-	PreferredLanguage   string   `json:"preferred_language,omitempty"`
-	Page                *int64   `json:"page,omitempty"`
-	PageSize            *int64   `json:"page_size,omitempty"`
-	SortBy              string   `json:"sort_by,omitempty"`
-	SortOrder           *int64   `json:"sort_order,omitempty"`
-	UseCursorPagination *bool    `json:"use_cursor_pagination,omitempty"`
-	CursorValue         string   `json:"cursor_value,omitempty"`
-	CursorID            string   `json:"cursor_id,omitempty"`
-	Username            string   `json:"username,omitempty"`
-	Password            string   `json:"password,omitempty"`
-	ChatroomID          string   `json:"chatroom_id,omitempty"`
-	SinceValue          *float64 `json:"since_value,omitempty"`
-	SinceID             string   `json:"since_id,omitempty"`
+	PreferredLanguage string `json:"preferred_language,omitempty"`
+	Page *int64 `json:"page,omitempty"`
+	PageSize *int64 `json:"page_size,omitempty"`
+	SortBy string `json:"sort_by,omitempty"`
+	SortOrder *int64 `json:"sort_order,omitempty"`
+	UseCursorPagination *bool `json:"use_cursor_pagination,omitempty"`
+	CursorValue string `json:"cursor_value,omitempty"`
+	CursorID string `json:"cursor_id,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	ChatroomID string `json:"chatroom_id,omitempty"`
+	SinceValue *float64 `json:"since_value,omitempty"`
+	SinceID string `json:"since_id,omitempty"`
 }
 
 // GetChatroomsParams holds the parameters for GetChatrooms.
 type GetChatroomsParams struct {
-	PreferredLanguage   string `json:"preferred_language,omitempty"`
-	Page                *int64 `json:"page,omitempty"`
-	PageSize            *int64 `json:"page_size,omitempty"`
-	SortBy              string `json:"sort_by,omitempty"`
-	SortOrder           *int64 `json:"sort_order,omitempty"`
-	UseCursorPagination *bool  `json:"use_cursor_pagination,omitempty"`
-	CursorValue         string `json:"cursor_value,omitempty"`
-	CursorID            string `json:"cursor_id,omitempty"`
-	Username            string `json:"username,omitempty"`
-	Password            string `json:"password,omitempty"`
-	GetPublic           *bool  `json:"get_public,omitempty"`
-	GetPrivate          *bool  `json:"get_private,omitempty"`
+	PreferredLanguage string `json:"preferred_language,omitempty"`
+	Page *int64 `json:"page,omitempty"`
+	PageSize *int64 `json:"page_size,omitempty"`
+	SortBy string `json:"sort_by,omitempty"`
+	SortOrder *int64 `json:"sort_order,omitempty"`
+	UseCursorPagination *bool `json:"use_cursor_pagination,omitempty"`
+	CursorValue string `json:"cursor_value,omitempty"`
+	CursorID string `json:"cursor_id,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	GetPublic *bool `json:"get_public,omitempty"`
+	GetPrivate *bool `json:"get_private,omitempty"`
 }
 
 // GetChatParams holds the parameters for GetChat.
 type GetChatParams struct {
-	PreferredLanguage   string `json:"preferred_language,omitempty"`
-	Page                *int64 `json:"page,omitempty"`
-	PageSize            *int64 `json:"page_size,omitempty"`
-	SortBy              string `json:"sort_by,omitempty"`
-	SortOrder           *int64 `json:"sort_order,omitempty"`
-	UseCursorPagination *bool  `json:"use_cursor_pagination,omitempty"`
-	CursorValue         string `json:"cursor_value,omitempty"`
-	CursorID            string `json:"cursor_id,omitempty"`
-	Username            string `json:"username,omitempty"`
-	Password            string `json:"password,omitempty"`
-	Codename            string `json:"codename,omitempty"`
+	PreferredLanguage string `json:"preferred_language,omitempty"`
+	Page *int64 `json:"page,omitempty"`
+	PageSize *int64 `json:"page_size,omitempty"`
+	SortBy string `json:"sort_by,omitempty"`
+	SortOrder *int64 `json:"sort_order,omitempty"`
+	UseCursorPagination *bool `json:"use_cursor_pagination,omitempty"`
+	CursorValue string `json:"cursor_value,omitempty"`
+	CursorID string `json:"cursor_id,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	Codename string `json:"codename,omitempty"`
 }
 
 // RagParams holds the parameters for Rag.
 type RagParams struct {
 	PreferredLanguage string `json:"preferred_language,omitempty"`
-	Username          string `json:"username,omitempty"`
-	Password          string `json:"password,omitempty"`
-	Codename          string `json:"codename,omitempty"`
-	Text              string `json:"text,omitempty"`
-	ChatroomID        string `json:"chatroom_id,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	Codename string `json:"codename,omitempty"`
+	Text string `json:"text,omitempty"`
+	ChatroomID string `json:"chatroom_id,omitempty"`
 }
 
 // TriggerSocialParams holds the parameters for TriggerSocial.
 type TriggerSocialParams struct {
 	PreferredLanguage string `json:"preferred_language,omitempty"`
-	Username          string `json:"username,omitempty"`
-	Password          string `json:"password,omitempty"`
-	MembershipID      string `json:"membership_id,omitempty"`
-	ChatroomID        string `json:"chatroom_id,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	MembershipID string `json:"membership_id,omitempty"`
+	ChatroomID string `json:"chatroom_id,omitempty"`
 }
 
 // GetMindClusterParams holds the parameters for GetMindCluster.
 type GetMindClusterParams struct {
 	PreferredLanguage string `json:"preferred_language,omitempty"`
-	Username          string `json:"username,omitempty"`
-	Password          string `json:"password,omitempty"`
-	Codename          string `json:"codename,omitempty"`
-	NodeID            string `json:"node_id,omitempty"`
-	TextsOffset       *int64 `json:"texts_offset,omitempty"`
-	TextsPageSize     *int64 `json:"texts_page_size,omitempty"`
-	ForceRebuild      *bool  `json:"force_rebuild,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	Codename string `json:"codename,omitempty"`
+	NodeID string `json:"node_id,omitempty"`
+	TextsOffset *int64 `json:"texts_offset,omitempty"`
+	TextsPageSize *int64 `json:"texts_page_size,omitempty"`
+	ForceRebuild *bool `json:"force_rebuild,omitempty"`
 }
 
 // GetSoulmateReportParams holds the parameters for GetSoulmateReport.
 type GetSoulmateReportParams struct {
 	PreferredLanguage string `json:"preferred_language,omitempty"`
-	Username          string `json:"username,omitempty"`
-	Password          string `json:"password,omitempty"`
-	MyCloneID         string `json:"my_clone_id,omitempty"`
-	OtherCloneID      string `json:"other_clone_id,omitempty"`
-	ChatroomID        string `json:"chatroom_id,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	MyCloneID string `json:"my_clone_id,omitempty"`
+	OtherCloneID string `json:"other_clone_id,omitempty"`
+	ChatroomID string `json:"chatroom_id,omitempty"`
 }
 
 // AbortMultipartUploadParams holds the parameters for AbortMultipartUpload.
 type AbortMultipartUploadParams struct {
 	PreferredLanguage string `json:"preferred_language,omitempty"`
-	Username          string `json:"username,omitempty"`
-	Password          string `json:"password,omitempty"`
-	R2Key             string `json:"r2_key,omitempty"`
-	UploadID          string `json:"upload_id,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	R2Key string `json:"r2_key,omitempty"`
+	UploadID string `json:"upload_id,omitempty"`
 }
 
 // CancelUploadParams holds the parameters for CancelUpload.
 type CancelUploadParams struct {
 	PreferredLanguage string `json:"preferred_language,omitempty"`
-	Username          string `json:"username,omitempty"`
-	Password          string `json:"password,omitempty"`
-	R2Key             string `json:"r2_key,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	R2Key string `json:"r2_key,omitempty"`
 }
 
 // CompleteMultipartUploadParams holds the parameters for CompleteMultipartUpload.
 type CompleteMultipartUploadParams struct {
-	PreferredLanguage string           `json:"preferred_language,omitempty"`
-	Username          string           `json:"username,omitempty"`
-	Password          string           `json:"password,omitempty"`
-	R2Key             string           `json:"r2_key,omitempty"`
-	UploadID          string           `json:"upload_id,omitempty"`
-	Parts             []map[string]any `json:"parts,omitempty"`
+	PreferredLanguage string `json:"preferred_language,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	R2Key string `json:"r2_key,omitempty"`
+	UploadID string `json:"upload_id,omitempty"`
+	Parts []map[string]any `json:"parts,omitempty"`
 }
 
 // ListUploadPartsParams holds the parameters for ListUploadParts.
 type ListUploadPartsParams struct {
 	PreferredLanguage string `json:"preferred_language,omitempty"`
-	Username          string `json:"username,omitempty"`
-	Password          string `json:"password,omitempty"`
-	R2Key             string `json:"r2_key,omitempty"`
-	UploadID          string `json:"upload_id,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	R2Key string `json:"r2_key,omitempty"`
+	UploadID string `json:"upload_id,omitempty"`
 }
 
 // RequestMultipartUploadParams holds the parameters for RequestMultipartUpload.
 type RequestMultipartUploadParams struct {
 	PreferredLanguage string `json:"preferred_language,omitempty"`
-	Username          string `json:"username,omitempty"`
-	Password          string `json:"password,omitempty"`
-	Filename          string `json:"filename,omitempty"`
-	ContentType       string `json:"content_type,omitempty"`
-	FileSizeBytes     *int64 `json:"file_size_bytes,omitempty"`
-	MediaType         string `json:"media_type,omitempty"`
-	HasThumbnail      *bool  `json:"has_thumbnail,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	Filename string `json:"filename,omitempty"`
+	ContentType string `json:"content_type,omitempty"`
+	FileSizeBytes *int64 `json:"file_size_bytes,omitempty"`
+	MediaType string `json:"media_type,omitempty"`
+	HasThumbnail *bool `json:"has_thumbnail,omitempty"`
 }
 
 // RequestUploadURLParams holds the parameters for RequestUploadURL.
 type RequestUploadURLParams struct {
 	PreferredLanguage string `json:"preferred_language,omitempty"`
-	Username          string `json:"username,omitempty"`
-	Password          string `json:"password,omitempty"`
-	Filename          string `json:"filename,omitempty"`
-	ContentType       string `json:"content_type,omitempty"`
-	FileSizeBytes     *int64 `json:"file_size_bytes,omitempty"`
-	MediaType         string `json:"media_type,omitempty"`
-	HasThumbnail      *bool  `json:"has_thumbnail,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	Filename string `json:"filename,omitempty"`
+	ContentType string `json:"content_type,omitempty"`
+	FileSizeBytes *int64 `json:"file_size_bytes,omitempty"`
+	MediaType string `json:"media_type,omitempty"`
+	HasThumbnail *bool `json:"has_thumbnail,omitempty"`
 }
 
 // SignUploadPartParams holds the parameters for SignUploadPart.
 type SignUploadPartParams struct {
 	PreferredLanguage string `json:"preferred_language,omitempty"`
-	Username          string `json:"username,omitempty"`
-	Password          string `json:"password,omitempty"`
-	R2Key             string `json:"r2_key,omitempty"`
-	UploadID          string `json:"upload_id,omitempty"`
-	PartNumber        *int64 `json:"part_number,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	R2Key string `json:"r2_key,omitempty"`
+	UploadID string `json:"upload_id,omitempty"`
+	PartNumber *int64 `json:"part_number,omitempty"`
 }
 
 // SignUploadPartsBatchParams holds the parameters for SignUploadPartsBatch.
 type SignUploadPartsBatchParams struct {
-	PreferredLanguage string  `json:"preferred_language,omitempty"`
-	Username          string  `json:"username,omitempty"`
-	Password          string  `json:"password,omitempty"`
-	R2Key             string  `json:"r2_key,omitempty"`
-	UploadID          string  `json:"upload_id,omitempty"`
-	PartNumbers       []int64 `json:"part_numbers,omitempty"`
+	PreferredLanguage string `json:"preferred_language,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	R2Key string `json:"r2_key,omitempty"`
+	UploadID string `json:"upload_id,omitempty"`
+	PartNumbers []int64 `json:"part_numbers,omitempty"`
 }
 
 // CreateTextParams holds the parameters for CreateText.
 type CreateTextParams struct {
 	PreferredLanguage string `json:"preferred_language,omitempty"`
-	Username          string `json:"username,omitempty"`
-	Password          string `json:"password,omitempty"`
-	Codename          string `json:"codename,omitempty"`
-	CloneID           string `json:"clone_id,omitempty"`
-	Text              string `json:"text,omitempty"`
-	Type              string `json:"type,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	Codename string `json:"codename,omitempty"`
+	CloneID string `json:"clone_id,omitempty"`
+	Text string `json:"text,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // GetTextsParams holds the parameters for GetTexts.
 type GetTextsParams struct {
-	PreferredLanguage   string `json:"preferred_language,omitempty"`
-	Page                *int64 `json:"page,omitempty"`
-	PageSize            *int64 `json:"page_size,omitempty"`
-	SortBy              string `json:"sort_by,omitempty"`
-	SortOrder           *int64 `json:"sort_order,omitempty"`
-	UseCursorPagination *bool  `json:"use_cursor_pagination,omitempty"`
-	CursorValue         string `json:"cursor_value,omitempty"`
-	CursorID            string `json:"cursor_id,omitempty"`
-	Username            string `json:"username,omitempty"`
-	Password            string `json:"password,omitempty"`
-	Codename            string `json:"codename,omitempty"`
-	Type                string `json:"type,omitempty"`
+	PreferredLanguage string `json:"preferred_language,omitempty"`
+	Page *int64 `json:"page,omitempty"`
+	PageSize *int64 `json:"page_size,omitempty"`
+	SortBy string `json:"sort_by,omitempty"`
+	SortOrder *int64 `json:"sort_order,omitempty"`
+	UseCursorPagination *bool `json:"use_cursor_pagination,omitempty"`
+	CursorValue string `json:"cursor_value,omitempty"`
+	CursorID string `json:"cursor_id,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	Codename string `json:"codename,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 // GetUserParams holds the parameters for GetUser.
 type GetUserParams struct {
 	PreferredLanguage string `json:"preferred_language,omitempty"`
-	Username          string `json:"username,omitempty"`
-	Password          string `json:"password,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
 }
 
 // UpdateUserParams holds the parameters for UpdateUser.
 type UpdateUserParams struct {
-	PreferredLanguage                string `json:"preferred_language,omitempty"`
-	Username                         string `json:"username,omitempty"`
-	Password                         string `json:"password,omitempty"`
-	Email                            string `json:"email,omitempty"`
-	EmailVerificationCode            string `json:"email_verification_code,omitempty"`
-	FirstName                        string `json:"first_name,omitempty"`
-	LastName                         string `json:"last_name,omitempty"`
-	Nickname                         string `json:"nickname,omitempty"`
-	Gender                           string `json:"gender,omitempty"`
-	BirthDate                        *int64 `json:"birth_date,omitempty"`
-	PhoneNumber                      string `json:"phone_number,omitempty"`
-	AvatarID                         string `json:"avatar_id,omitempty"`
-	AcceptChatroomInvitationByOthers *bool  `json:"accept_chatroom_invitation_by_others,omitempty"`
+	PreferredLanguage string `json:"preferred_language,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	Email string `json:"email,omitempty"`
+	EmailVerificationCode string `json:"email_verification_code,omitempty"`
+	FirstName string `json:"first_name,omitempty"`
+	LastName string `json:"last_name,omitempty"`
+	Nickname string `json:"nickname,omitempty"`
+	Gender string `json:"gender,omitempty"`
+	BirthDate *int64 `json:"birth_date,omitempty"`
+	PhoneNumber string `json:"phone_number,omitempty"`
+	AvatarID string `json:"avatar_id,omitempty"`
+	AcceptChatroomInvitationByOthers *bool `json:"accept_chatroom_invitation_by_others,omitempty"`
 }
 
 // --- AI Consciousnesses ---
