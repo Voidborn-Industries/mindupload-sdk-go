@@ -117,18 +117,47 @@ func TestServerErrorNotRetried(t *testing.T) {
 	var calls int
 	srv := newTestServer(t, func(w http.ResponseWriter, r *http.Request) {
 		calls++
-		w.WriteHeader(http.StatusInternalServerError)
+		w.WriteHeader(http.StatusServiceUnavailable)
 		_, _ = w.Write([]byte(`{"success":false,"error_message":"boom"}`))
 	})
 	defer srv.Close()
 	mu := New("pk", WithBaseURL(srv.URL), WithMaxRetries(2))
 	_, err := mu.Rag(context.Background(), RagParams{Username: "a"})
 	var apiErr *Error
-	if !errors.As(err, &apiErr) || apiErr.Status != 500 {
-		t.Fatalf("want *Error status 500, got %v", err)
+	if !errors.As(err, &apiErr) || apiErr.Status != 503 {
+		t.Fatalf("want *Error status 503, got %v", err)
 	}
 	if calls != 1 {
 		t.Errorf("5xx must not be retried (non-idempotent POST); calls = %d", calls)
+	}
+}
+
+func TestWaitForExternalAuthorizationReturnsExchange(t *testing.T) {
+	var gotDeviceCode string
+	srv := newTestServer(t, func(w http.ResponseWriter, r *http.Request) {
+		var body map[string]any
+		_ = json.NewDecoder(r.Body).Decode(&body)
+		gotDeviceCode, _ = body["device_code"].(string)
+		_, _ = w.Write([]byte(
+			`{"success":true,"status":"exchanged","access_token":"access","clone_ids":["clone"]}`,
+		))
+	})
+	defer srv.Close()
+	mu := New("pk", WithBaseURL(srv.URL))
+	result, err := mu.WaitForExternalAuthorization(
+		context.Background(), "mindupload_external_device_test",
+	)
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if result.String("access_token") != "access" {
+		t.Errorf("access_token = %q", result.String("access_token"))
+	}
+	if cloneIDs := result.Strings("clone_ids"); len(cloneIDs) != 1 || cloneIDs[0] != "clone" {
+		t.Errorf("clone_ids = %v", cloneIDs)
+	}
+	if gotDeviceCode != "mindupload_external_device_test" {
+		t.Errorf("device_code = %q", gotDeviceCode)
 	}
 }
 

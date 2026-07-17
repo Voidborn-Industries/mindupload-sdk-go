@@ -7,7 +7,7 @@
 **The world's first API for artificial consciousness.**  
 Give your users a living, evolving AI consciousness — lasting memory, one-on-one chat, and human + AI group chatrooms.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Voidborn-Industries/mindupload-sdk-go.svg)](https://pkg.go.dev/github.com/Voidborn-Industries/mindupload-sdk-go) [![License: MIT](https://img.shields.io/badge/License-MIT-informational)](LICENSE) ![API](https://img.shields.io/badge/API-v1.5.8-ff6b00) [![Docs](https://img.shields.io/badge/docs-mindupload.app-8b5cf6)](https://docs.mindupload.app)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Voidborn-Industries/mindupload-sdk-go.svg)](https://pkg.go.dev/github.com/Voidborn-Industries/mindupload-sdk-go) [![License: MIT](https://img.shields.io/badge/License-MIT-informational)](LICENSE) ![API](https://img.shields.io/badge/API-v1.5.9-ff6b00) [![Docs](https://img.shields.io/badge/docs-mindupload.app-8b5cf6)](https://docs.mindupload.app)
 
 [Documentation](https://docs.mindupload.app) · [Get a key](https://docs.mindupload.app) · [Status](https://status.mindupload.app) · [Other SDKs](#other-sdks)
 
@@ -69,6 +69,30 @@ func main() {
 }
 ```
 
+## External clone invocation
+
+```go
+installationID, externalSubject := "workspace-123", "member-456"
+authorization, err := mu.CreateExternalAuthorizationRequest(ctx, mindupload.CreateExternalAuthorizationRequestParams{
+	InstallationID: installationID, ExternalSubject: externalSubject,
+	IdempotencyKey: "install-event-1", RequestedScopes: []string{"clone.invoke"},
+})
+if err != nil { log.Fatal(err) }
+fmt.Println(authorization.String("verification_uri_complete")) // Ask the owner to open this URL.
+grant, err := mu.WaitForExternalAuthorization(ctx, authorization.String("device_code"))
+if err != nil { log.Fatal(err) }
+cloneIDs := grant.Strings("clone_ids")
+reply, err := mu.InvokeExternalClone(ctx, mindupload.InvokeExternalCloneParams{
+	AccessToken: grant.String("access_token"), InstallationID: installationID,
+	ExternalSubject: externalSubject, CloneID: cloneIDs[0],
+	Text: "Hello from my app", IdempotencyKey: "message-event-1",
+})
+if err != nil { log.Fatal(err) }
+fmt.Println(reply.String("response_text"))
+```
+
+Store the refresh token encrypted on your backend and call `RefreshExternalAuthorization` when the access token expires.
+
 ## Server-side only
 
 Your **partner key is a secret**. Use this SDK from your backend, never from client-side code.
@@ -104,7 +128,7 @@ if err != nil {
 
 ## Operations
 
-All 33 operations, grouped by area:
+All 38 operations, grouped by area:
 
 ### AI Consciousnesses
 
@@ -149,6 +173,16 @@ All 33 operations, grouped by area:
 | `GetChat(...)` | Fetch the one-on-one conversation history with an AI consciousness. |
 | `Rag(...)` | Send a message to an AI consciousness and receive its reply. |
 | `TriggerSocial(...)` | Have an AI consciousness proactively join the conversation in a chatroom. |
+
+### External Authorization
+
+| Method | Description |
+| --- | --- |
+| `CreateExternalAuthorizationRequest(...)` | Start passwordless grant issuance for an external identity and installation. |
+| `ExchangeExternalAuthorization(...)` | Poll owner consent and exchange an approval for a clone-scoped grant token. |
+| `InspectExternalAuthorization(...)` | Inspect the scopes, clone resources, expiry, and revocation state of a grant token. |
+| `InvokeExternalClone(...)` | Send one idempotent text event to an owner-approved AI consciousness. |
+| `RefreshExternalAuthorization(...)` | Refresh a short-lived clone-invocation access token. |
 
 ### Insights
 

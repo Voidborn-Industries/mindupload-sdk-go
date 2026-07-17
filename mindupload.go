@@ -19,7 +19,7 @@ const authHeader = "X-Partner-Key"
 // Only server backpressure is retried. Operations are non-idempotent POSTs (Rag
 // spends credits, Create* mutate), so 5xx / network / timeout failures are
 // surfaced immediately rather than risking a duplicate side effect.
-var retryStatuses = map[int]bool{429: true, 503: true}
+var retryStatuses = map[int]bool{429: true}
 
 // Client is a Mind Upload partner API client. Create one with New; it is safe
 // for concurrent use.
@@ -62,7 +62,7 @@ func WithTimeout(d time.Duration) Option {
 	return func(c *Client) { c.timeout = d }
 }
 
-// WithMaxRetries sets how many times a 429/5xx/network failure is retried.
+// WithMaxRetries sets how many times an explicit 429 response is retried.
 func WithMaxRetries(n int) Option {
 	return func(c *Client) {
 		if n >= 0 {
@@ -122,6 +122,25 @@ func (r *Response) Bool(key string) bool {
 		return b
 	}
 	return false
+}
+
+// Strings returns a string-array field (nil if absent or malformed).
+func (r *Response) Strings(key string) []string {
+	values, ok := r.Data[key].([]any)
+	if !ok {
+		return nil
+	}
+	result := make([]string, 0, len(values))
+	// Conversion is local and bounded by one response field; no external call
+	// occurs inside this loop.
+	for _, value := range values {
+		item, ok := value.(string)
+		if !ok {
+			return nil
+		}
+		result = append(result, item)
+	}
+	return result
 }
 
 // Decode unmarshals the full response into v (a struct or map).
