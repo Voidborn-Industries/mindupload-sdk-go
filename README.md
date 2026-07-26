@@ -7,7 +7,7 @@
 **The world's first API for artificial consciousness.**  
 Give your users a living, evolving AI consciousness — lasting memory, one-on-one chat, and human + AI group chatrooms.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Voidborn-Industries/mindupload-sdk-go.svg)](https://pkg.go.dev/github.com/Voidborn-Industries/mindupload-sdk-go) [![License: MIT](https://img.shields.io/badge/License-MIT-informational)](LICENSE) ![API](https://img.shields.io/badge/API-v1.9.6-ff6b00) [![Docs](https://img.shields.io/badge/docs-mindupload.app-8b5cf6)](https://docs.mindupload.app)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Voidborn-Industries/mindupload-sdk-go.svg)](https://pkg.go.dev/github.com/Voidborn-Industries/mindupload-sdk-go) [![License: MIT](https://img.shields.io/badge/License-MIT-informational)](LICENSE) ![API](https://img.shields.io/badge/API-v1.10.0-ff6b00) [![Docs](https://img.shields.io/badge/docs-mindupload.app-8b5cf6)](https://docs.mindupload.app)
 
 [Documentation](https://docs.mindupload.app) · [Get a key](https://docs.mindupload.app) · [Status](https://status.mindupload.app) · [Other SDKs](#other-sdks)
 
@@ -128,7 +128,7 @@ if err != nil {
 
 ## Operations
 
-All 40 operations, grouped by area:
+All 44 operations, grouped by area:
 
 ### AI Consciousnesses
 
@@ -163,7 +163,9 @@ All 40 operations, grouped by area:
 | `CreateChatroomMessage(...)` | Send a message to a chatroom. |
 | `GetChatroomMembership(...)` | List the members of a chatroom the user belongs to. |
 | `GetChatroomMessages(...)` | Fetch messages from a chatroom the user belongs to. |
+| `GetChatroomMessagesAround(...)` | Fetch a window of chatroom messages around one message id (for jump-to). |
 | `GetChatrooms(...)` | List the chatrooms the user belongs to. |
+| `SearchChatroomMessages(...)` | Find messages in a chatroom by keyword, date, media type, and/or sender. |
 | `TranslateChatroomMessage(...)` | Translate a text chatroom message into the viewer language. |
 
 ### Conversation
@@ -171,7 +173,9 @@ All 40 operations, grouped by area:
 | Method | Description |
 | --- | --- |
 | `GetChat(...)` | Fetch the one-on-one conversation history with an AI consciousness. |
+| `GetChatAround(...)` | Fetch a window of one-on-one turns around one chat id (for jump-to). |
 | `Rag(...)` | Send a message to an AI consciousness and receive its reply. |
+| `SearchChats(...)` | Find turns in a one-on-one AI conversation by keyword, date, media type, and/or Human/AI side. |
 | `TriggerSocial(...)` | Have an AI consciousness proactively join the conversation in a chatroom. |
 
 ### External Authorization
