@@ -7,7 +7,7 @@
 **The world's first API for artificial consciousness.**  
 Give your users a living, evolving AI consciousness — lasting memory, one-on-one chat, and human + AI group chatrooms.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Voidborn-Industries/mindupload-sdk-go.svg)](https://pkg.go.dev/github.com/Voidborn-Industries/mindupload-sdk-go) [![License: MIT](https://img.shields.io/badge/License-MIT-informational)](LICENSE) ![API](https://img.shields.io/badge/API-v1.11.6-ff6b00) [![Docs](https://img.shields.io/badge/docs-mindupload.app-8b5cf6)](https://docs.mindupload.app)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Voidborn-Industries/mindupload-sdk-go.svg)](https://pkg.go.dev/github.com/Voidborn-Industries/mindupload-sdk-go) [![License: MIT](https://img.shields.io/badge/License-MIT-informational)](LICENSE) ![API](https://img.shields.io/badge/API-v1.12.0-ff6b00) [![Docs](https://img.shields.io/badge/docs-mindupload.app-8b5cf6)](https://docs.mindupload.app)
 
 [Documentation](https://docs.mindupload.app) · [Get a key](https://docs.mindupload.app) · [Status](https://status.mindupload.app) · [Other SDKs](#other-sdks)
 
@@ -128,7 +128,7 @@ if err != nil {
 
 ## Operations
 
-All 44 operations, grouped by area:
+All 49 operations, grouped by area:
 
 ### AI Consciousnesses
 
@@ -195,6 +195,16 @@ All 44 operations, grouped by area:
 | --- | --- |
 | `GetMindCluster(...)` | Fetch the mind-graph visualization data of an AI consciousness. |
 | `GetSoulmateReport(...)` | Generate or fetch the compatibility report between two chatroom members. |
+
+### Live calls
+
+| Method | Description |
+| --- | --- |
+| `CreateCallSession(...)` | Start a live voice and video call in a chatroom, or join the one already running. |
+| `EndCallSession(...)` | End a live call for everyone in it. |
+| `GetActiveCallSession(...)` | Check whether a chatroom has a live call, and how many people are in it. |
+| `JoinCallSession(...)` | Join a live call that is already running in a chatroom. |
+| `RefreshCallToken(...)` | Get a fresh joining pass for a call, before the current one expires. |
 
 ### Media
 

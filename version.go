@@ -1,4 +1,4 @@
 package mindupload
 
 // Version matches the Mind Upload API release it was generated from.
-const Version = "1.11.6"
+const Version = "1.12.0"
