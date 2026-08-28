@@ -7,7 +7,7 @@
 **The world's first API for artificial consciousness.**  
 Give your users a living, evolving AI consciousness — lasting memory, one-on-one chat, and human + AI group chatrooms.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Voidborn-Industries/mindupload-sdk-go.svg)](https://pkg.go.dev/github.com/Voidborn-Industries/mindupload-sdk-go) [![License: MIT](https://img.shields.io/badge/License-MIT-informational)](LICENSE) ![API](https://img.shields.io/badge/API-v1.12.2-ff6b00) [![Docs](https://img.shields.io/badge/docs-mindupload.app-8b5cf6)](https://docs.mindupload.app)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Voidborn-Industries/mindupload-sdk-go.svg)](https://pkg.go.dev/github.com/Voidborn-Industries/mindupload-sdk-go) [![License: MIT](https://img.shields.io/badge/License-MIT-informational)](LICENSE) ![API](https://img.shields.io/badge/API-v1.13.0-ff6b00) [![Docs](https://img.shields.io/badge/docs-mindupload.app-8b5cf6)](https://docs.mindupload.app)
 
 [Documentation](https://docs.mindupload.app) · [Get a key](https://docs.mindupload.app) · [Status](https://status.mindupload.app) · [Other SDKs](#other-sdks)
 
@@ -128,7 +128,7 @@ if err != nil {
 
 ## Operations
 
-All 51 operations, grouped by area:
+All 52 operations, grouped by area:
 
 ### AI Consciousnesses
 
@@ -220,6 +220,7 @@ All 51 operations, grouped by area:
 | `RequestUploadURL(...)` | Request an upload slot and a signed viewing link for a media attachment. |
 | `SignUploadPart(...)` | Get the signed link for one part of a multipart upload. |
 | `SignUploadPartsBatch(...)` | Get signed links for several parts of a multipart upload at once. |
+| `StartMediaAnalysis(...)` | Begin analysing an uploaded or linked attachment so its description is ready before the message is sent. |
 
 ### Memories
 
