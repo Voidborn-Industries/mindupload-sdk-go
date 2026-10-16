@@ -7,7 +7,7 @@
 **The world's first API for artificial consciousness.**  
 Give your users a living, evolving AI consciousness — lasting memory, one-on-one chat, and human + AI group chatrooms.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Voidborn-Industries/mindupload-sdk-go.svg)](https://pkg.go.dev/github.com/Voidborn-Industries/mindupload-sdk-go) [![License: MIT](https://img.shields.io/badge/License-MIT-informational)](LICENSE) ![API](https://img.shields.io/badge/API-v1.15.10-ff6b00) [![Docs](https://img.shields.io/badge/docs-mindupload.app-8b5cf6)](https://docs.mindupload.app)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Voidborn-Industries/mindupload-sdk-go.svg)](https://pkg.go.dev/github.com/Voidborn-Industries/mindupload-sdk-go) [![License: MIT](https://img.shields.io/badge/License-MIT-informational)](LICENSE) ![API](https://img.shields.io/badge/API-v1.15.11-ff6b00) [![Docs](https://img.shields.io/badge/docs-mindupload.app-8b5cf6)](https://docs.mindupload.app)
 
 [Documentation](https://docs.mindupload.app) · [Get a key](https://docs.mindupload.app) · [Status](https://status.mindupload.app) · [Other SDKs](#other-sdks)
 
@@ -75,7 +75,7 @@ func main() {
 installationID, externalSubject := "workspace-123", "member-456"
 authorization, err := mu.CreateExternalAuthorizationRequest(ctx, mindupload.CreateExternalAuthorizationRequestParams{
 	InstallationID: installationID, ExternalSubject: externalSubject,
-	IdempotencyKey: "install-event-1", RequestedScopes: []string{"clone.invoke"},
+	IdempotencyKey: "install-event-1", RequestedScopes: []string{"clone:invoke"},
 })
 if err != nil { log.Fatal(err) }
 fmt.Println(authorization.String("verification_uri_complete")) // Ask the owner to open this URL.
