@@ -7,7 +7,7 @@
 **The world's first API for artificial consciousness.**  
 Give your users a living, evolving AI consciousness — lasting memory, one-on-one chat, and human + AI group chatrooms.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Voidborn-Industries/mindupload-sdk-go.svg)](https://pkg.go.dev/github.com/Voidborn-Industries/mindupload-sdk-go) [![License: MIT](https://img.shields.io/badge/License-MIT-informational)](LICENSE) ![API](https://img.shields.io/badge/API-v1.15.19-ff6b00) [![Docs](https://img.shields.io/badge/docs-mindupload.app-8b5cf6)](https://docs.mindupload.app)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Voidborn-Industries/mindupload-sdk-go.svg)](https://pkg.go.dev/github.com/Voidborn-Industries/mindupload-sdk-go) [![License: MIT](https://img.shields.io/badge/License-MIT-informational)](LICENSE) ![API](https://img.shields.io/badge/API-v1.15.20-ff6b00) [![Docs](https://img.shields.io/badge/docs-mindupload.app-8b5cf6)](https://docs.mindupload.app)
 
 [Documentation](https://docs.mindupload.app) · [Get a key](https://docs.mindupload.app) · [Status](https://status.mindupload.app) · [Other SDKs](#other-sdks)
 
@@ -128,13 +128,15 @@ if err != nil {
 
 ## Operations
 
-All 64 operations, grouped by area:
+All 67 operations, grouped by area:
 
 ### AI Consciousnesses
 
 | Method | Description |
 | --- | --- |
 | `CreateClone(...)` | Create a new AI consciousness for the user. |
+| `DesignCloneVoice(...)` | Change an AI consciousness's voice by trying a new one. |
+| `GetCloneVoice(...)` | Read the voice an AI consciousness speaks one language in, and hear it. |
 | `GetClones(...)` | List the user's AI consciousnesses. |
 | `UpdateClone(...)` | Update an AI consciousness's profile. |
 
@@ -176,6 +178,7 @@ All 64 operations, grouped by area:
 | `GetChatAround(...)` | Fetch a window of one-on-one turns around one chat id (for jump-to). |
 | `Rag(...)` | Send a message to an AI consciousness and receive its reply. |
 | `SearchChats(...)` | Find turns in a one-on-one AI conversation by keyword, date, media type, and/or Human/AI side. |
+| `SpeakMessage(...)` | Hear one part of an AI consciousness's message in its own voice. |
 | `TriggerSocial(...)` | Have an AI consciousness proactively join the conversation in a chatroom. |
 
 ### External Authorization
