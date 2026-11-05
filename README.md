@@ -7,7 +7,7 @@
 **An API for AI consciousnesses built from people's memories, persona and way of thinking.**  
 Give your users lasting memory, one-on-one chat, and human + AI group chatrooms.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Voidborn-Industries/mindupload-sdk-go.svg)](https://pkg.go.dev/github.com/Voidborn-Industries/mindupload-sdk-go) [![License: MIT](https://img.shields.io/badge/License-MIT-informational)](LICENSE) ![API](https://img.shields.io/badge/API-v1.15.38-ff6b00) [![Docs](https://img.shields.io/badge/docs-mindupload.app-8b5cf6)](https://docs.mindupload.app)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Voidborn-Industries/mindupload-sdk-go.svg)](https://pkg.go.dev/github.com/Voidborn-Industries/mindupload-sdk-go) [![License: MIT](https://img.shields.io/badge/License-MIT-informational)](LICENSE) ![API](https://img.shields.io/badge/API-v1.15.39-ff6b00) [![Docs](https://img.shields.io/badge/docs-mindupload.app-8b5cf6)](https://docs.mindupload.app)
 
 [Documentation](https://docs.mindupload.app) · [Get a key](https://docs.mindupload.app) · [Status](https://status.mindupload.app) · [Other SDKs](#other-sdks)
 
@@ -128,7 +128,7 @@ if err != nil {
 
 ## Operations
 
-All 68 operations, grouped by area:
+All 73 operations, grouped by area:
 
 ### AI Consciousnesses
 
@@ -190,14 +190,19 @@ All 68 operations, grouped by area:
 | `CreateExternalAuthorizationRequest(...)` | Start passwordless grant issuance for an external identity and installation. |
 | `EndExternalAuthorization(...)` | End a grant your application holds, for example when its user disconnects. |
 | `ExchangeExternalAuthorization(...)` | Poll owner consent and exchange an approval for a clone-scoped grant token. |
+| `GetExternalChat(...)` | Read the owner's own chat with their AI consciousness, a page at a time. |
+| `GetExternalChatAround(...)` | Open the owner's own chat around one turn. |
 | `GetExternalMediaAnalysis(...)` | Read the current owned media analysis without restarting generation. |
 | `GetExternalMediaPolicy(...)` | Read current native media limits and owner quota without starting work. |
 | `GetExternalQuarantinedTexts(...)` | List pending memories of the owner's granted AI consciousness. |
 | `InspectExternalAuthorization(...)` | Inspect the scopes, clone resources, expiry, and revocation state of a grant token. |
 | `InvokeExternalClone(...)` | Send one idempotent text event to an owner-approved AI consciousness. |
+| `OpenExternalConversation(...)` | Let the owner's AI consciousness speak first as the owner opens their chat. |
 | `RefreshExternalAuthorization(...)` | Refresh a short-lived clone-invocation access token. |
 | `RequestExternalMediaUpload(...)` | Authorize one exact media upload to the owner’s granted AI consciousness. Needs `clone:evidence` (analysis only, never kept as a memory) or `clone:upload`. |
 | `ReviewExternalQuarantinedText(...)` | Edit, approve or reject the displayed revision of one pending memory. |
+| `SearchExternalChats(...)` | Find turns in the owner's own chat with their AI consciousness. |
+| `SpeakExternalChat(...)` | Hear one part of a reply in the owner's chat, in the AI consciousness's own voice. |
 | `StartExternalMediaAnalysis(...)` | Explicitly describe one completed controlled upload. |
 | `UploadExternalMindData(...)` | Upload mind data (text and media) into the owner's own AI consciousness. |
 
