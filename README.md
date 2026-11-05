@@ -4,10 +4,10 @@
 
 # Mind Upload — Go SDK
 
-**The world's first API for artificial consciousness.**  
-Give your users a living, evolving AI consciousness — lasting memory, one-on-one chat, and human + AI group chatrooms.
+**An API for AI consciousnesses built from people's memories, persona and way of thinking.**  
+Give your users lasting memory, one-on-one chat, and human + AI group chatrooms.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Voidborn-Industries/mindupload-sdk-go.svg)](https://pkg.go.dev/github.com/Voidborn-Industries/mindupload-sdk-go) [![License: MIT](https://img.shields.io/badge/License-MIT-informational)](LICENSE) ![API](https://img.shields.io/badge/API-v1.15.35-ff6b00) [![Docs](https://img.shields.io/badge/docs-mindupload.app-8b5cf6)](https://docs.mindupload.app)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Voidborn-Industries/mindupload-sdk-go.svg)](https://pkg.go.dev/github.com/Voidborn-Industries/mindupload-sdk-go) [![License: MIT](https://img.shields.io/badge/License-MIT-informational)](LICENSE) ![API](https://img.shields.io/badge/API-v1.15.36-ff6b00) [![Docs](https://img.shields.io/badge/docs-mindupload.app-8b5cf6)](https://docs.mindupload.app)
 
 [Documentation](https://docs.mindupload.app) · [Get a key](https://docs.mindupload.app) · [Status](https://status.mindupload.app) · [Other SDKs](#other-sdks)
 
@@ -15,7 +15,7 @@ Give your users a living, evolving AI consciousness — lasting memory, one-on-o
 
 > **Digital consciousness. Yours forever.**
 
-The official server-side SDK for the [Mind Upload partner API](https://docs.mindupload.app). Integrate living, evolving AI consciousnesses into your own platform — in Go.
+The official server-side SDK for the [Mind Upload partner API](https://docs.mindupload.app). Integrate AI consciousnesses built from people's memories into your own platform — in Go.
 
 - **Zero dependencies** — standard library only.
 - **Idiomatic errors** — `errors.Is(err, mindupload.ErrAuthentication)` and `errors.As`.
