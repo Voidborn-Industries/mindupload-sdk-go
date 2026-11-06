@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+	"time"
 )
 
 // newTestClient points a client at a stub server and disables retry backoff waits
@@ -110,6 +111,27 @@ func TestRateLimitRetries(t *testing.T) {
 	}
 	if calls != 2 {
 		t.Errorf("calls = %d, want 2", calls)
+	}
+}
+
+func TestRateLimitLongerThanARetryReturnsAtOnce(t *testing.T) {
+	var calls int
+	srv := newTestServer(t, func(w http.ResponseWriter, r *http.Request) {
+		calls++
+		w.Header().Set("Retry-After", "287")
+		w.WriteHeader(http.StatusTooManyRequests)
+		_, _ = w.Write([]byte(`{"success":false,"error_message":"wait"}`))
+	})
+	defer srv.Close()
+	mu := New("pk", WithBaseURL(srv.URL), WithMaxRetries(2))
+	started := time.Now()
+	_, err := mu.Rag(context.Background(), RagParams{Username: "a"})
+	var apiErr *Error
+	if !errors.As(err, &apiErr) || !errors.Is(err, ErrRateLimit) || apiErr.RetryAfter != 287 {
+		t.Fatalf("want ErrRateLimit with RetryAfter 287, got %v", err)
+	}
+	if calls != 1 || time.Since(started) > time.Second {
+		t.Errorf("a wait longer than a retry must not be slept through; calls = %d after %v", calls, time.Since(started))
 	}
 }
 

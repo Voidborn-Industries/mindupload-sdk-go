@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"io"
+	"math"
 	"net/http"
 	"strconv"
 	"strings"
@@ -20,6 +21,12 @@ const authHeader = "X-Partner-Key"
 // spends credits, Create* mutate), so 5xx / network / timeout failures are
 // surfaced immediately rather than risking a duplicate side effect.
 var retryStatuses = map[int]bool{429: true}
+
+// maxRetryWait is the longest server-advised wait a call sleeps through before
+// retrying. A longer wait (the spacing between memory preparations, a daily cap)
+// cannot end within a retry, so the call returns at once with that wait in
+// Error.RetryAfter for the caller to schedule.
+const maxRetryWait = 60 * time.Second
 
 // Client is a Mind Upload partner API client. Create one with New; it is safe
 // for concurrent use.
@@ -62,7 +69,8 @@ func WithTimeout(d time.Duration) Option {
 	return func(c *Client) { c.timeout = d }
 }
 
-// WithMaxRetries sets how many times an explicit 429 response is retried.
+// WithMaxRetries sets how many times an explicit 429 response is retried. A 429
+// advising a wait longer than 60 seconds is never retried; it returns at once.
 func WithMaxRetries(n int) Option {
 	return func(c *Client) {
 		if n >= 0 {
@@ -210,13 +218,15 @@ func (c *Client) do(ctx context.Context, operation string, params map[string]any
 		}
 
 		if resp.StatusCode < 200 || resp.StatusCode >= 300 {
-			if retryStatuses[resp.StatusCode] && attempt < c.maxRetries {
-				if werr := sleepCtx(ctx, backoff(attempt+1, resp.Header.Get("Retry-After"))); werr != nil {
+			retryAfter, hasRetryAfter := retryAfterSeconds(resp.Header.Get("Retry-After"))
+			waitFitsARetry := !hasRetryAfter || time.Duration(retryAfter*float64(time.Second)) <= maxRetryWait
+			if retryStatuses[resp.StatusCode] && attempt < c.maxRetries && waitFitsARetry {
+				if werr := sleepCtx(ctx, backoff(attempt+1, retryAfter, hasRetryAfter)); werr != nil {
 					return nil, werr
 				}
 				continue
 			}
-			return nil, errorFor(resp.StatusCode, data, operation, resp.Header.Get("Retry-After"))
+			return nil, errorFor(resp.StatusCode, data, operation, retryAfter, hasRetryAfter)
 		}
 
 		success, _ := data["success"].(bool)
@@ -231,7 +241,16 @@ func (c *Client) do(ctx context.Context, operation string, params map[string]any
 	}
 }
 
-func errorFor(status int, data map[string]any, operation, retryAfter string) *Error {
+// retryAfterSeconds reads a Retry-After header in seconds; false when absent or not a finite number.
+func retryAfterSeconds(header string) (float64, bool) {
+	seconds, err := strconv.ParseFloat(header, 64)
+	if err != nil || math.IsInf(seconds, 0) || math.IsNaN(seconds) {
+		return 0, false
+	}
+	return seconds, true
+}
+
+func errorFor(status int, data map[string]any, operation string, retryAfter float64, hasRetryAfter bool) *Error {
 	msg, _ := data["error_message"].(string)
 	if msg == "" {
 		msg = "HTTP " + strconv.Itoa(status)
@@ -242,22 +261,16 @@ func errorFor(status int, data map[string]any, operation, retryAfter string) *Er
 		e.err = ErrAuthentication
 	case 429:
 		e.err = ErrRateLimit
-		if ra, perr := strconv.ParseFloat(retryAfter, 64); perr == nil {
-			e.RetryAfter = ra
+		if hasRetryAfter {
+			e.RetryAfter = retryAfter
 		}
 	}
 	return e
 }
 
-func backoff(attempt int, retryAfter string) time.Duration {
-	if retryAfter != "" {
-		if s, err := strconv.ParseFloat(retryAfter, 64); err == nil {
-			d := time.Duration(s * float64(time.Second))
-			if d > 60*time.Second {
-				d = 60 * time.Second
-			}
-			return d
-		}
+func backoff(attempt int, retryAfter float64, hasRetryAfter bool) time.Duration {
+	if hasRetryAfter {
+		return time.Duration(retryAfter * float64(time.Second))
 	}
 	ms := 500 * (1 << uint(attempt-1))
 	if ms > 8000 {
